@@ -5,8 +5,7 @@ export const login = (req, res) => {
     const token = jwt.sign({
         exp: Math.floor(Date.now() / 1000) + (60 * 60),
         data: {
-            username: "admin",
-            role: "role_admin"
+            username: "admin"
         }
     }, exports.secret);
 

@@ -25,7 +25,6 @@ export default class Server
         }
 
         routes(){
-
             this.app.use(router)
         }
 
