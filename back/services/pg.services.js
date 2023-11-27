@@ -3,26 +3,23 @@ import {exports} from "../config/default.js"
 
 export default class pgServices
 {
-    constructor() {
-        if (pgServices.instance) {
+    constructor(){
+        if(pgServices.instance){
             return pgServices.instance;
         }
 
         pgServices.instance = this;
 
-        this.connectionPromise = (async () => {
-            const pg = pgPromise({});
-            this.connection = pg(exports.postgres);
-
-            try {
-                const res = await this.connection.connect();
-                console.log("CONECTADO A LA BASE DE DATOS");
-                res.done();
-                return "Conexión exitosa";
-            } catch (error) {
-                console.log("ERROR", error.message || error);
-                throw new Error("Error al conectar a la base de datos");
-            }
-        })();
+        const pg = pgPromise({});
+        this.connection = pg(exports.postgres);
+        this.connection.connect()
+        .then(res=>{
+            console.log("CONECTADO A LA BASE DE DATOS")
+            res.done()
+        })
+        .catch(error =>{
+            console.log("ERROR", error.message || error);
+            return "fallo en la conexion"
+        })
     }
 }
