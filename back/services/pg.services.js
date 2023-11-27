@@ -12,11 +12,11 @@ export default class pgServices
 
         const pg = pgPromise({});
         this.connection = pg(exports.postgres);
-        ssl = true;
         this.connection.connect()
         .then(res=>{
             console.log("CONECTADO A LA BASE DE DATOS")
             res.done()
+            return "Conexion exitosa"
         })
         .catch(error =>{
             console.log("ERROR", error.message || error);
