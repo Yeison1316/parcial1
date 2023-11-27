@@ -16,10 +16,11 @@ export default class pgServices
         .then(res=>{
             console.log("CONECTADO A LA BASE DE DATOS")
             res.done()
+            return true
         })
         .catch(error =>{
             console.log("ERROR", error.message || error);
-            return "fallo en la conexion"
+            return false
         })
     }
 }
