@@ -5,5 +5,5 @@ export const exports =
 {
     port : process.env.PORT,
     postgres : process.env.URL_POSTGRES,
-    secret_key: process.env.SECRET_KEY
+    secret: process.env.SECRET_KEY
 }
