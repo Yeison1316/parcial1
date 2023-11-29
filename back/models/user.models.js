@@ -1,4 +1,4 @@
-import { pgServices } from "../services/pg.services";
+import pgServices from "../services/pg.services";
 
 export const getAuthUser = async (email,password) => {
     let con = new pgServices();

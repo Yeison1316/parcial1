@@ -1,4 +1,4 @@
-import { getAuthUser} from "../models/user.models";
+import { getAuthUser } from "../models/user.models";
 
 export async function getuser(req, res) {
     try {
