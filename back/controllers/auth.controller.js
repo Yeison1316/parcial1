@@ -1,7 +1,13 @@
 import jwt from "jsonwebtoken";
 import { exports } from "../config/default.js";
+import { getuser } from "./user.controller.js";
 
-export const login = (req, res) => {
+export const login = async (req, res) => {
+    const { email, password } = req.body;
+    const data = await getuser(email,password);
+    if (!data) {
+        return res.status(401).json({ success: false, msg: 'Invalid credentials' });
+      }
     const token = jwt.sign({
         exp: Math.floor(Date.now() / 1000) + (60 * 60),
         data: {
