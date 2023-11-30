@@ -7,7 +7,7 @@ const app = express();
 const router = Router();
 
 app.use(cors({
-    origin: 'https://angular-front-d2426.web.app', // Permitir solicitudes solo desde esta URL
+    origin: 'https://angular-front-d2426.web.app/', // Permitir solicitudes solo desde esta URL
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     credentials: true, // Habilitar el envío de cookies de autenticación
   }));
