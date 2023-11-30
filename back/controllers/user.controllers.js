@@ -7,6 +7,6 @@ export async function getuser(req, res) {
       let data = await getAuthUser(email,password);
       res.json({ success: true, data: data, msg: "Usuario authenticado" });
     } catch (error) {
-      res.json({ success: false, msg: "Credenciales invalidas" });
+      return console.error("Faltan credenciales")
     }
   }
