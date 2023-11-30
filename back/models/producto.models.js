@@ -2,7 +2,7 @@ import pgServices from "../services/pg.services.js";
 
 export const getProductoModel = async () => {
     let con = new pgServices();
-    return await con.connection.query('SELECT p.id, p.title, p.price, p.description, c.id AS category_id, c.name AS category_name, c.image AS category_image, p.images FROM products p JOIN categories c ON p.category_id = c.id');
+    return await con.connection.query('SELECT p.id, p.title, p.price, p.description, c.id AS category_id, c.name AS category_name, c.image AS category_image_url, p.images FROM products p JOIN categories c ON p.category_id = c.id');
 }
 
 export const getProductoUnicoModel = async (id_producto) => {
