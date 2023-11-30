@@ -1,6 +1,7 @@
 import { Router } from "express";
 import { verifyToken } from "./token.middleware.js";
 import cors from 'cors'
+import express from "express";
 
 const app = express();
 const router = Router();
