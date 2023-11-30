@@ -22,6 +22,13 @@ export default class Server
         {
             this.app.use(bodyParser.json());
             this.app.use(middle);
+            const cors = require("cors");
+            const corsOptions = {
+                origin: 'http://localhost:4200',
+                methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+                credentials: true,
+              };
+              this.use(cors(corsOptions));
         }
 
         routes(){
