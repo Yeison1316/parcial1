@@ -1,25 +1,35 @@
 import jwt from "jsonwebtoken";
 import { exports } from "../config/default.js";
-import { getuser } from "./user.controllers.js";
+import { getAuthUser } from "../models/user.models.js";
 
 export const login = async (req, res) => {
-    const { email, password } = req.body;
-    const data = await getuser(email,password);
-    if (!data) {
-         return console.error("Faltan credenciales")
-      }
-    const token = jwt.sign({
-        exp: Math.floor(Date.now() / 1000) + (60 * 60),
-        data: {
-            username: "admin",
-            role: "role_admin"
+    try {
+        const { email , password } = req.query; 
+        let data = await getAuthUser(email , password );
+        if(!data){
+            throw new Error("Credenciales no válidas");
         }
-    }, exports.secret);
+        const token = jwt.sign({
+            exp: Math.floor(Date.now() / 1000) + (60 * 60),
+            data: {
+                username: "admin",
+                role: "role_admin"
+            }
+        }, exports.secret);
+    
+        res.status(200).json({
+            token: token,
+            success: true,
+            data: [],
+            msg: "Logeado EXITOSAMENTE"
+        })
 
-    res.status(200).json({
-        token: token,
-        success: true,
-        data: [],
-        msg: "Logeado EXITOSAMENTE"
-    })
+    } catch (e) {
+        res.status(401).json({
+            success: false, 
+            data: "Servicio no disponible" , 
+            msg : "Servicio no disponible"
+        });  
+    }
+    
 }
