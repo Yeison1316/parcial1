@@ -2,6 +2,7 @@ import { Router } from "express";
 import { verifyToken } from "./token.middleware.js";
 import cors from 'cors'
 
+const app = express();
 const router = Router();
 
 app.use(cors({
