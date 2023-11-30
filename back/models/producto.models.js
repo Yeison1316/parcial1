@@ -1,20 +1,8 @@
 import pgServices from "../services/pg.services.js";
-
+import { baseProductQuery } from "../config/formatting.js";
 export const getProductoModel = async () => {
     let con = new pgServices();
-    return await con.connection.query(`SELECT 
-    p.id, 
-    p.title, 
-    p.price, 
-    p.description, 
-    c.id AS category_id, 
-    c.name AS category_name, 
-    c.image_url AS category_image, 
-    p.images 
-    FROM 
-    products p 
-    JOIN 
-    categories c ON p.category_id = c.id`);
+    return await con.connection.query(baseProductQuery);
 }
 
 export const getProductoUnicoModel = async (id_producto) => {
