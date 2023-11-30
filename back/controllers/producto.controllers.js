@@ -9,7 +9,8 @@ import {
   export const getProductoAll = async (req, res) => {
     try {
       let data = await getProductoModel();
-      res.send({ success: true, msg: "HOLA GET PRODUCTO", data: data });
+      const formattedData = formatProductData(data);
+      res.send({ success: true, msg: "HOLA GET PRODUCTO", data: formattedData });
     } catch (error) {
       res.status(500).json({ success: false, msg: "Error al obtener productos" });
     }
