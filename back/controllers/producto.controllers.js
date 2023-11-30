@@ -5,7 +5,7 @@ import {
     updateProductoModel,
     deleteProductoModel,
   } from "../models/producto.models.js";
-  
+  import { formatProductData } from "../config/formatting.js";
   export const getProductoAll = async (req, res) => {
     try {
       let data = await getProductoModel();
