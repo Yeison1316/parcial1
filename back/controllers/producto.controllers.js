@@ -20,7 +20,8 @@ import {
     try {
       let  id_producto = req.params.id_producto;
       let data = await getProductoUnicoModel(id_producto);
-      res.json({ success: true, data: data, msg: "Obtener producto por ID" });
+      const formattedData = formatProductData(data);
+      res.json({ success: true, data: formattedData, msg: "Obtener producto por ID" });
     } catch (error) {
       res.status(500).json({ success: false, msg: "Error al obtener el producto" });
     }
