@@ -7,7 +7,7 @@ export const getProductoModel = async () => {
 
 export const getProductoUnicoModel = async (id_producto) => {
     let con = new pgServices();
-    return await con.connection.one(`${baseProductQuery}
+    return await con.connection.query(`${baseProductQuery}
     WHERE p.id = $1`, [id_producto]);
 }
 
