@@ -5,4 +5,5 @@ import { verifyToken } from "./token.middleware.js";
 const router = Router();
 
 router.use("/producto", verifyToken);
+router.use("/categories", verifyToken);
 export default router;
