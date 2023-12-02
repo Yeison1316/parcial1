@@ -6,7 +6,6 @@ import {
     deleteProductoModel,
   } from "../models/producto.models.js";
   import { formatProductData } from "../config/formatting.js";
-  import { getCategory } from "../models/category.models.js";
 
   export const getProductoAll = async (req, res) => {
     try {
@@ -59,12 +58,3 @@ import {
       res.status(500).json({ success: false, msg: "Error al eliminar el producto" });
     }
   }
-  //Consulta para extraer las categorias 
-  export const getCategoryALL = async (res) => {
-    try {
-      let data = await getCategory();
-      res.send({ success: true, msg: "HOLA GET CATEGORY", data: data });
-    } catch (error) {
-      res.status(500).json({ success: false, msg: "Error al obtener las categorias" });
-    }
-  };
