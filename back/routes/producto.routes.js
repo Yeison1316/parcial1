@@ -1,5 +1,5 @@
 import {Router} from "express";
-import {getProducto, postProducto, getProductoAll, updateProducto, deleteProducto, getCategoryALL} from "../controllers/producto.controllers.js"
+import {getProducto, postProducto, getProductoAll, updateProducto, deleteProducto} from "../controllers/producto.controllers.js"
 import {validate} from "../middlewares/validator.middleware.js"
 import { productoValidator } from "../validator/producto.validator.js";
 
