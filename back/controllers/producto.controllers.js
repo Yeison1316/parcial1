@@ -30,8 +30,8 @@ import {
   
   export async function postProducto(req, res) {
     try {
-      let { nombre, valor } = req.body;
-      let data = await postProductoModel(nombre, valor);
+      let {title, price,description,category_id,images  } = req.body;
+      let data = await postProductoModel(title, price,description,category_id,images);
       res.json({ success: true, data: [], msg: data });
     } catch (error) {
       res.status(500).json({ success: false, msg: "Error al crear el producto" });
@@ -41,8 +41,8 @@ import {
   export async function updateProducto(req, res) {
     try {
       const { id_producto } = req.params;
-      let { nombre, valor } = req.body;
-      let data = await updateProductoModel(id_producto, nombre, valor);
+      let { title, price,description,category_id,images} = req.body;
+      let data = await updateProductoModel(id_producto, title, price,description,category_id,images);
       res.json({ success: true, data: [], msg: data });
     } catch (error) {
       res.status(500).json({ success: false, msg: "Error al actualizar el producto" });
