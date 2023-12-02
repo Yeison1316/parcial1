@@ -1,7 +1,7 @@
 import {Router} from "express";
 import Producto from "./producto.routes.js";
 import Auth from "./auth.route.js"
-import Category from "./category.route.js"
+import Category from "./category.routes.js"
 
 const router = Router();
 
