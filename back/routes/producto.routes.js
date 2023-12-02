@@ -10,5 +10,4 @@ router.get("/:id_producto", getProducto);
 router.post("/", validate(productoValidator), postProducto);
 router.put("/:id_producto", validate(productoValidator), updateProducto);
 router.delete("/:id_producto", deleteProducto);
-router.get("/categories", getCategoryALL);
 export default router;

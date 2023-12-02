@@ -60,7 +60,7 @@ import {
     }
   }
   //Consulta para extraer las categorias 
-  export const getCategoryALL = async (req, res) => {
+  export const getCategoryALL = async (res) => {
     try {
       let data = await getCategory();
       res.send({ success: true, msg: "HOLA GET CATEGORY", data: data });
