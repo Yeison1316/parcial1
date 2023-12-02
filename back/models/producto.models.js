@@ -19,7 +19,7 @@ export const postProductoModel = async (title, price,description,category_id,ima
         con.connection.none(`INSERT INTO products 
         (title, price, description, category_id, images)  
         VALUES 
-        ($1, $2)`, [title, price,description,category_id,images]);
+        ($1, $2,$3,$4,$5)`, [title, price,description,category_id,images]);
         return 'Transacción realizada';
     } catch (error) {
         return 'En este momento no se puede realizar su transacción';
@@ -29,9 +29,9 @@ export const postProductoModel = async (title, price,description,category_id,ima
 export const updateProductoModel = async (id_producto, title, price,description,category_id,images) => {
     try {
         let con = new pgServices();
-        await con.connection.none(`UPDATE producto 
-        SET NOMBRE = $1, VALOR = $2
-        WHERE id= $3`, [title, price,description,category_id,images, id_producto]);
+        await con.connection.none(`UPDATE productos 
+        SET title = $1, price = $2, description = $3, category_id = $4, images = $5
+        WHERE id= $6`, [title, price,description,category_id,images, id_producto]);
         return 'Registro actualizado exitosamente';
     } catch (error) {
         return 'No se pudo actualizar el registro';
@@ -41,7 +41,7 @@ export const updateProductoModel = async (id_producto, title, price,description,
 export const deleteProductoModel = async (id_producto) => {
     try {
         let con = new pgServices();
-        await con.connection.none(`DELETE FROM producto 
+        await con.connection.none(`DELETE FROM products
         WHERE id = $1`, [id_producto]);
         return 'Registro eliminado exitosamente';
     } catch (error) {
