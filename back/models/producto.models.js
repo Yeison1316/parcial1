@@ -1,5 +1,7 @@
 import pgServices from "../services/pg.services.js";
 import { baseProductQuery } from "../config/formatting.js";
+
+
 export const getProductoModel = async () => {
     let con = new pgServices();
     return await con.connection.query(baseProductQuery);
