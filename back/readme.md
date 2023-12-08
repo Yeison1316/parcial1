@@ -52,13 +52,13 @@ Run Producción:
 ## Variables de Entorno
 ```
 ###> CONFIG SERVER <####
-PORT=8080
+PORT=5432
 URL_SERVER=http:\\localhost:5432\prueba_test
 ###> CONFIG SERVER <####
 
 ###> DB_CONNECTION ### 
-DB_URL_PG=postgres://postgres:admin@localhost:5432/prueba
-###< CONFIGURE SERVER ###
+DB_URL_PG=postgres:postgres://admin:iesvGYmjnFcikn0s3Uxub3GbFbgquJqb@dpg-cli41m6f27hc739urb00-a.oregon-postgres.render.com/productosdb
+###< DB_CONNECTION ###
 
 ###> SECRET_KEY ###
 SECRET_KEY=ufpso
@@ -90,14 +90,9 @@ src\
 <code>GET /api/producto</code> 
 - Request
     - **query**
-        - **page**
-        - **limit**
 - Response
     - **success:** boolean   
     - **msg :** string
-    - **count:** number
-    - **page :** number
-    - **all :** number
     - **data :** array
  
 <code>GET http://localhost:8080/producto/:id</code> 
@@ -112,8 +107,13 @@ src\
 <code>POST http://localhost:8080/producto</code>
 - Request
     - **body:**
-        - **nombre** :  requerido
-        - **valor** :  requerido
+        - **title** :  requerido
+    - **params:**
+        - **title** : requerido
+        - **price** : requerido
+        - **description** : requerido
+        - **category_id** : requerido
+        - **images** : requerido
 - Response
     - **success :** boolean
     - **data :** json
@@ -121,10 +121,12 @@ src\
 
 <code>PUT http://localhost:8080/producto/:id</code>
 - Request
-    - **body**
-        - **id** :  requerido
-        - **nombre**
-        - **valor**
+    - **body:**
+        - **title** : requerido
+        - **price** : requerido
+        - **description** : requerido
+        - **category_id** : requerido
+        - **images** : requerido
 - Response
     - **success :** boolean
     - **data :** json
