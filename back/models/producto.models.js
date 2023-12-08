@@ -29,7 +29,7 @@ export const postProductoModel = async (title, price,description,category_id,ima
 export const updateProductoModel = async (id_producto, title, price,description,category_id,images) => {
     try {
         let con = new pgServices();
-        await con.connection.none(`UPDATE productos 
+        await con.connection.none(`UPDATE products 
         SET title = $1, price = $2, description = $3, category_id = $4, images = $5
         WHERE id= $6`, [title, price,description,category_id,images, id_producto]);
         return 'Registro actualizado exitosamente';
